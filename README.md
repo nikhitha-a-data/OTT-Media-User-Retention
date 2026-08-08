@@ -26,14 +26,14 @@ The pipeline automates raw data ingestion via **Dataflow Gen2** into an **OTT La
 ### 1. Data Lineage & Lakehouse Architecture
 The line-of-sight pipeline tracks automated ingestion from raw CSV telemetry through Dataflow Gen2, persisting Delta tables within the **OTT Lakehouse** and serving them via the **SQL Analytics Endpoint**.
 
-![Fabric Data Lineage Workflow](./semantic model.png)
+![Fabric Data Lineage Workflow](./semantic_model.png)
 
 ---
 
 ### 2. ETL & Transformation Layer (Power Query / Dataflow Gen2)
 Data cleaning and schema standardization steps applied in Power Query to handle multi-platform schema alignment:
 
-![Dataflow Gen2 Applied Steps](./etl.jpg)
+![Dataflow Gen2 Applied Steps](./etl.png)
 
 ---
 
