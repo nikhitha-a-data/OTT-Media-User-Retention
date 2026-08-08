@@ -1,0 +1,78 @@
+// ===============================================================================
+// OTT MEDIA ANALYTICS – COMPLETE DAX MEASURES CODEBLOCK
+// Repo: nikhitha-a-data/OTT-Merger
+// ===============================================================================
+
+// -------------------------------------------------------------------------------
+// 1. CORE KPI & VOLUME MEASURES
+// -------------------------------------------------------------------------------
+
+Total Subscribers = 
+DISTINCTCOUNT(Fact_Subscribers[user_id])
+
+Total Watch Time Mins = 
+SUM(Fact_Consumption[total_watch_time_mins])
+
+Total Streaming Hours = 
+DIVIDE([Total Watch Time Mins], 60, 0)
+
+Watch Time Hours = 
+[Total Streaming Hours]
+
+Gross Watch Time Millions = 
+DIVIDE([Total Streaming Hours], 1000000, 0)
+
+
+// -------------------------------------------------------------------------------
+// 2. USER RETENTION & ENGAGEMENT MEASURES
+// -------------------------------------------------------------------------------
+
+Retention Rate % = 
+VAR RetainedUsers = CALCULATE(DISTINCTCOUNT(Fact_Subscribers[user_id]), Fact_Subscribers[status] = "Active")
+RETURN DIVIDE(RetainedUsers, [Total Subscribers], 0) * 100
+
+Dormant Users = 
+CALCULATE(
+    DISTINCTCOUNT(Fact_Subscribers[user_id]),
+    Fact_Subscribers[status] = "Inactive",
+    Fact_Subscribers[age_group] = "18-24"
+)
+
+Avg Session Mins = 
+AVERAGE(Fact_Consumption[total_watch_time_mins])
+
+Engagement Score = 
+DIVIDE([Total Streaming Hours], [Total Subscribers], 0)
+
+
+// -------------------------------------------------------------------------------
+// 3. PREMIUM REVENUE & LEAKAGE MEASURES
+// -------------------------------------------------------------------------------
+
+lekage base = 
+CALCULATE(
+    DISTINCTCOUNT(Fact_Subscribers[user_id]),
+    Fact_Subscribers[subscription_type] = "Free",
+    Fact_Consumption[is_premium_content] = 1
+)
+
+Premium Leakage = 
+[lekage base]
+
+At Risk Premium = 
+CALCULATE(
+    DISTINCTCOUNT(Fact_Subscribers[user_id]),
+    Fact_Subscribers[subscription_type] = "Premium",
+    Fact_Subscribers[status] = "At Risk"
+)
+
+
+// -------------------------------------------------------------------------------
+// 4. CATALOG ANALYTICS MEASURES
+// -------------------------------------------------------------------------------
+
+Content Catalog Size = 
+DISTINCTCOUNT(dim_content[content_id])
+
+Genre Watch Hours = 
+CALCULATE([Total Streaming Hours], ALLEXCEPT(dim_content, dim_content[genre]))
