@@ -42,7 +42,7 @@ Data cleaning and schema standardization steps applied in Power Query to handle 
 ### View 1: Enterprise Sales Performance
 *Tracks high-level revenue trends, monthly sales performance, distribution channel splits, and top revenue-generating retail partners.*
 
-![Enterprise Sales Performance](./Enterprise_Sales_Performance.png)
+![Enterprise Sales Performance](./.png)
 
 ---
 
