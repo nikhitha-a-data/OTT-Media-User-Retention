@@ -37,16 +37,16 @@ Data cleaning and schema standardization steps applied in Power Query to handle 
 
 ---
 
-## Power BI Executive Dashboard Views
+## Power BI Dashboard Views
 
-### View 1: Enterprise Sales Performance
-*Tracks high-level revenue trends, monthly sales performance, distribution channel splits, and top revenue-generating retail partners.*
+### View 1: Subscriber & Retention Analytics
+*Tracks post-merger subscriber health, retention rates (61%), churn trends by age group (89K dormant users), and plan tier distribution across Jotstar and LioCinema.*
 
-![Enterprise Sales Performance](./.png)
+![Subscriber and Retention Analytics](./Subscriber_Retention_Analytics.png)
 
 ---
 
-### View 2: Division & Margin Analysis
-*Analyzes sales distribution by product division, discount vs. revenue correlation (margin leakage), and bottom-performing product lines.*
+### View 2: Consumption & Viewing Habits
+*Monitors streaming volume (16M total hours), user engagement duration, content catalog size (4K), and platform watch time distribution.*
 
-![Division and Margin Analysis](./Division_Margin_Analysis.png)
+![Consumption and Viewing Habits](./Consumption_Viewing_Habits.png)
